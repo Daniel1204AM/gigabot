@@ -96,7 +96,7 @@ async def on_message(message):
     if message.author.bot:
         return
 
-    if client.user.mentioned_in(message):
+    if client.user in message.mentions and not message.mention_everyone:
         prompt = message.content
         prompt = prompt.replace(f'<@!{client.user.id}>', '').replace(f'<@{client.user.id}>', '').strip()
 
